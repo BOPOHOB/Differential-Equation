@@ -27,11 +27,11 @@ int main()
 	auto euler1(std::bind(solvertTester<double>, Euler<double>(eulerEquationSolve, dt, t0), equationSolve, std::placeholders::_1, tEnd));
 	auto rungeKutta1(std::bind(solvertTester<double>, RungeKutta<double>(rightSide, dt, t0), equationSolve, std::placeholders::_1, tEnd));
 	std::cout << "for maximum norm:" << std::endl;
-	std::cout << "\tEuler error: " << euler1(MNorm()) << std::endl;
-	std::cout << "\tRungeKutta error: " << rungeKutta1(MNorm()) << std::endl;
+	std::cout << "\tEuler deficiency: " << euler1(MNorm()) << std::endl;
+	std::cout << "\tRungeKutta deficiency: " << rungeKutta1(MNorm()) << std::endl;
 	std::cout << "for Manhattan norm:" << std::endl;
-	std::cout << "\tEuler error: " << euler1(ManhattanNorm()) << std::endl;
-	std::cout << "\tRungeKutta error: " << rungeKutta1(ManhattanNorm()) << std::endl;
+	std::cout << "\tEuler deficiency: " << euler1(ManhattanNorm()) << std::endl;
+	std::cout << "\tRungeKutta deficiency: " << rungeKutta1(ManhattanNorm()) << std::endl;
 	std::cout << std::endl << "================" << std::endl << std::endl;
 
 	static const double m(10.0);
@@ -48,11 +48,11 @@ int main()
 	auto euler2(std::bind(solvertTester<double>, Euler<double>(eulerEquationSolve2, dt, v0), equationSolve2, std::placeholders::_1, tEnd));
 	auto rungeKutta2(std::bind(solvertTester<double>, RungeKutta<double>(rightSide2, dt, v0), equationSolve2, std::placeholders::_1, tEnd));
 	std::cout << "for maximum norm:" << std::endl;
-	std::cout << "\tEuler error: " << euler2(MNorm()) << std::endl;
-	std::cout << "\tRungeKutta error: " << rungeKutta2(MNorm()) << std::endl;
+	std::cout << "\tEuler deficiency: " << euler2(MNorm()) << std::endl;
+	std::cout << "\tRungeKutta deficiency: " << rungeKutta2(MNorm()) << std::endl;
 	std::cout << "for Manhattan norm:" << std::endl;
-	std::cout << "\tEuler error: " << euler2(ManhattanNorm()) << std::endl;
-	std::cout << "\tRungeKutta error: " << rungeKutta2(ManhattanNorm()) << std::endl;
+	std::cout << "\tEuler deficiency: " << euler2(ManhattanNorm()) << std::endl;
+	std::cout << "\tRungeKutta deficiency: " << rungeKutta2(ManhattanNorm()) << std::endl;
 
 	return !true && !false;
 }
