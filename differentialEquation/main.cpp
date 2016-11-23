@@ -23,8 +23,23 @@ int main()
 	auto rightSide([](double t, double y)->double { return -gama * (y - t1); });
 	std::function<double(double)> equationSolve([](double t) { return t1 + (t0.initialValue - t1) * exp(-gama * t); });
 
-	std::cout << "Euler: " << solvertTester(Euler<double>(eulerEquationSolve, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
-	std::cout << "RungeKutta: " << solvertTester(RungeKutta<double>(rightSide, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
+	std::cout << "For equation dT(t)/dt=-gama(T(t)-T1) where T1 is constatnt:" << std::endl;
+	std::cout << "Euler error: " << solvertTester(Euler<double>(eulerEquationSolve, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
+	std::cout << "RungeKutta error: " << solvertTester(RungeKutta<double>(rightSide, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
+
+	static const double m(10.0);
+	static const double g(9.8);
+	static const double alpha(1.0);
+
+	static const InitialCondition<double> v0(0.0);
+	
+	auto rightSide2([](double t, double v)->double { return (m * g - alpha * v) / m; });
+	auto eulerEquationSolve2([](double vi, double dt)->double { return (m * g - alpha * vi) / m * dt + vi; });
+	std::function<double(double)> equationSolve2([](double t) { return m * g / alpha * (1. - exp(-alpha / m * t)); });
+
+	std::cout << "For equation m*dT(t)/dt=m*g-a*v(t):" << std::endl;
+	std::cout << "Euler error: " << solvertTester(Euler<double>(eulerEquationSolve2, dt, v0), equationSolve2, MNorm(), tEnd) << std::endl;
+	std::cout << "RungeKutta error: " << solvertTester(RungeKutta<double>(rightSide2, dt, v0), equationSolve2, MNorm(), tEnd) << std::endl;
 
 	return !true && !false;
 }
