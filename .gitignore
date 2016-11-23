@@ -1,0 +1,10 @@
+**.user
+build**/
+Debug**/
+**/Debug**/
+**.db
+**.opendb
+**/Thumbs.db
+**.autosave
+**.filters
+.vs/**
