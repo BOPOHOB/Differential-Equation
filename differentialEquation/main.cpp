@@ -23,8 +23,8 @@ int main()
 	auto rightSide([](double t, double y)->double { return -gama * (y - t1); });
 	std::function<double(double)> equationSolve([](double t) { return t1 + (t0.initialValue - t1) * exp(-gama * t); });
 
-	std::cout << solvertTester(Euler<double>(eulerEquationSolve, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
-	std::cout << solvertTester(RungeKutta<double>(rightSide, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
+	std::cout << "Euler: " << solvertTester(Euler<double>(eulerEquationSolve, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
+	std::cout << "RungeKutta: " << solvertTester(RungeKutta<double>(rightSide, dt, t0), equationSolve, MNorm(), tEnd) << std::endl;
 
 	return !true && !false;
 }
