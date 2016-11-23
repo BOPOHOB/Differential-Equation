@@ -4,10 +4,21 @@
 Output example:
 ```
 For equation dT(t)/dt=-gama(T(t)-T1) where T1 is constatnt:
-Euler error: 0.00367726
-RungeKutta error: 2.54463e-13
+for maximum norm:
+        Euler error: 0.00367726
+        RungeKutta error: 2.54463e-13
+for Manhattan norm:
+        Euler error: 9.99334
+        RungeKutta error: 6.87646e-10
+
+================
+
 For equation m*dT(t)/dt=m*g-a*v(t):
-Euler error: 0.00180268
-RungeKutta error: 4.27036e-12
+for maximum norm:
+        Euler error: 0.00180268
+        RungeKutta error: 4.27036e-12
+for Manhattan norm:
+        Euler error: 12.9512
+        RungeKutta error: 1.52095e-08
 Для продолжения нажмите любую клавишу . . .
 ```
